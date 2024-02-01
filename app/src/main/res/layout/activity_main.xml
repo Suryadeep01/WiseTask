@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/text_top"
+        android:layout_width="356dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="1dp"
+        android:text="Let's eat\nQuality food"
+        android:textStyle="bold"
+        android:textAlignment="viewStart"
+        android:textSize="20sp" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_top"
+
+        android:layout_marginTop="16dp"/>
+
+    <!-- Near Restaurant text -->
+    <TextView
+        android:id="@+id/text_near_restaurant"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:text="Near Restaurant"/>
+
+    <!-- See All text -->
+    <TextView
+        android:id="@+id/text_see_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:text="See All"/>
+
+    <!-- CardView -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/text_near_restaurant"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:elevation="8dp"
+        app:cardCornerRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <!-- Left side: Image -->
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img"
+                android:layout_marginEnd="8dp" />
+
+
+            <!-- Right side: Texts and Rating -->
+            <LinearLayout
+                android:layout_width="190dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <!-- Three Texts -->
+                <TextView
+                    android:id="@+id/title_template"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Blue Restaurant"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10:00 AM - 03:30PM"
+                    android:textStyle="bold" />
+
+                <!-- RatingBar -->
+                <RatingBar
+                    android:id="@+id/rating"
+                    android:layout_width="194dp"
+                    android:layout_height="40dp"
+                    android:numStars="5"
+                    android:rating="4.5"
+                    android:scaleY="0.8"
+                    android:stepSize="0.5" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Your existing RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerVi"
+        android:layout_width="match_parent"
+        android:layout_height="447dp"
+        android:layout_below="@id/text_near_restaurant"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="126dp"
+        android:clipToPadding="false"
+        android:padding="16dp" />
+
+</RelativeLayout>
