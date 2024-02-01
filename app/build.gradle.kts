@@ -1,11 +1,22 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+//    id("org.jetbrains.kotlin.android.extensions")
+
 }
 
 android {
     namespace = "com.example.wisetask"
     compileSdk = 34
+
+
+
+
+
+//        androidExtensions {
+//            experimental = true
+//        }
+
 
 
     defaultConfig {

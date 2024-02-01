@@ -2,6 +2,7 @@ package com.example.wisetask
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -18,12 +19,30 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        loadData()
+        loadData("rum")
+
+
+
+        val searchView = findViewById<SearchView>(R.id.searchView)
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                loadData(query)
+
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val searchText = newText.orEmpty()
+                return true
+            }
+        })
+
     }
 
-    fun loadData() {
+    fun loadData(query: String?) {
         mojitoInitViewModel = ViewModelProvider(this).get(mojitoViewModel::class.java)
-        mojitoInitViewModel.getApiData()
+        mojitoInitViewModel.getApiData(query)
         mojitoInitViewModel.mojitoDataList.observe(this, Observer {
             initAdapter(it)
         })
