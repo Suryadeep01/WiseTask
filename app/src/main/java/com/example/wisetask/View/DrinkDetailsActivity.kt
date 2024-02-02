@@ -14,25 +14,20 @@ class DrinkDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drink_details)
 
-
         if (intent.hasExtra("cocktail")) {
             val cocktail = intent.getSerializableExtra("cocktail") as? Cocktail
-
 
             val imageViewDetails: ImageView = findViewById(R.id.imageViewDetails)
             val textNameDetails: TextView = findViewById(R.id.textNameDetails)
             val textInstructionsDetails: TextView = findViewById(R.id.textInstructionsDetails)
             val textIngredientsDetails: TextView = findViewById(R.id.textIngredientsDetails)
 
-
             Glide.with(this)
                 .load(cocktail?.strDrinkThumb) // Replace with actual property
                 .into(imageViewDetails)
 
-
             textNameDetails.text = cocktail?.strDrink
             textInstructionsDetails.text = cocktail?.strInstructions
-
 
             val ingredientsBuilder = StringBuilder()
             for (i in 1..15) {
@@ -44,6 +39,11 @@ class DrinkDetailsActivity : AppCompatActivity() {
                 }
             }
             textIngredientsDetails.text = ingredientsBuilder.toString()
+        }
+
+        val fabBack: ImageView = findViewById(R.id.fabBack)
+        fabBack.setOnClickListener {
+            onBackPressed()
         }
     }
 

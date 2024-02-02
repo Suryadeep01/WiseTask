@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
 
 
@@ -23,12 +24,13 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="290dp"
+        android:layout_height="40dp"
         android:layout_below="@id/text_top"
-        android:layout_marginTop="16dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/searchview_background" />
-
 
     <TextView
         android:id="@+id/text_near_restaurant"
@@ -43,15 +45,15 @@
         android:text="Near By Restaurant"/>
 
 
-<!--    <TextView-->
-<!--        android:id="@+id/text_see_all"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/searchView"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_marginEnd="16dp"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        android:text="See All"/>-->
+    <TextView
+        android:id="@+id/text_see_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchView"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:text="See All"/>
 
 
     <androidx.cardview.widget.CardView
