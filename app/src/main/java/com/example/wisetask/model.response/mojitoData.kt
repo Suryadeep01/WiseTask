@@ -1,8 +1,10 @@
 package com.example.wisetask.model.response
 
+import java.io.Serializable
+
 data class CocktailResponse(
     val drinks: List<Cocktail>
-)
+): java.io.Serializable
 
 data class Cocktail(
     val idDrink: String,
@@ -56,4 +58,4 @@ data class Cocktail(
     val strImageAttribution: String?,
     val strCreativeCommonsConfirmed: String?,
     val dateModified: String?
-)
+): Serializable

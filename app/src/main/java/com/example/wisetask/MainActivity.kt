@@ -1,5 +1,8 @@
+// MainActivity.kt
+
 package com.example.wisetask
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.SearchView
@@ -7,12 +10,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wisetask.View.DrinkDetailsActivity
 import com.example.wisetask.adapter.Adapter
 import com.example.wisetask.model.response.Cocktail
 import com.example.wisetask.viewModel.mojitoViewModel
 
-
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Adapter.OnItemClickListener {
 
     lateinit var mojitoInitViewModel: mojitoViewModel
 
@@ -21,14 +24,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         loadData("rum")
 
-
-
         val searchView = findViewById<SearchView>(R.id.searchView)
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 loadData(query)
-
                 return false
             }
 
@@ -37,7 +37,6 @@ class MainActivity : AppCompatActivity() {
                 return true
             }
         })
-
     }
 
     fun loadData(query: String?) {
@@ -50,7 +49,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun initAdapter(cocktailList: List<Cocktail>) {
         val recyclerView: RecyclerView = findViewById(R.id.recyclerVi)
-        recyclerView.layoutManager = GridLayoutManager(this, 2) // Change 2 to the number of columns you want
-        recyclerView.adapter = Adapter(cocktailList)
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
+        recyclerView.adapter = Adapter(cocktailList, this)
+    }
+
+    override fun onItemClick(cocktail: Cocktail) {
+        val intent = Intent(this, DrinkDetailsActivity::class.java)
+        intent.putExtra("cocktail", cocktail)
+        startActivity(intent)
     }
 }

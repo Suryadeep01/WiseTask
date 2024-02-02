@@ -68,7 +68,7 @@
             <!-- Left side: Image -->
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="100dp"
+                android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
@@ -90,24 +90,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Blue Restaurant"
-                    android:textSize="20dp" />
+                    android:textSize="15dp" />
 
                 <TextView
                     android:id="@+id/time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10:00 AM - 03:30PM"
-                    android:textStyle="bold" />
+                     />
 
                 <!-- RatingBar -->
-                <RatingBar
-                    android:id="@+id/rating"
-                    android:layout_width="194dp"
-                    android:layout_height="40dp"
-                    android:numStars="5"
-                    android:rating="4.5"
-                    android:scaleY="0.8"
-                    android:stepSize="0.5" />
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/stars"
+                    android:layout_marginEnd="8dp" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

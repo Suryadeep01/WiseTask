@@ -1,3 +1,5 @@
+// Adapter.kt
+
 package com.example.wisetask.adapter
 
 import android.view.LayoutInflater
@@ -10,7 +12,14 @@ import com.example.wisetask.R
 import com.example.wisetask.model.response.Cocktail
 import com.google.android.material.textview.MaterialTextView
 
-class Adapter(private val mList: List<Cocktail>) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class Adapter(
+    private val mList: List<Cocktail>,
+    private val itemClickListener: OnItemClickListener
+) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+
+    interface OnItemClickListener {
+        fun onItemClick(cocktail: Cocktail)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -21,6 +30,10 @@ class Adapter(private val mList: List<Cocktail>) : RecyclerView.Adapter<Adapter.
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mList[position]
         holder.bindData(item)
+
+        holder.itemView.setOnClickListener {
+            itemClickListener.onItemClick(item)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -36,7 +49,6 @@ class Adapter(private val mList: List<Cocktail>) : RecyclerView.Adapter<Adapter.
             textView1.text = item.idDrink
             textView.text = item.strDrink
 
-            // Load image using Glide
             Glide.with(itemView.context)
                 .load(item.strDrinkThumb)
                 .into(imageView)
