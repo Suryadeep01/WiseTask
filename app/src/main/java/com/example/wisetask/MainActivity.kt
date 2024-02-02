@@ -1,5 +1,3 @@
-// MainActivity.kt
-
 package com.example.wisetask
 
 import android.content.Intent
@@ -28,13 +26,21 @@ class MainActivity : AppCompatActivity(), Adapter.OnItemClickListener {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                loadData(query)
+                if (!query.isNullOrBlank()) {
+                    loadData(query)
+                } else {
+                }
                 return false
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 val searchText = newText.orEmpty()
+                if (!searchText.isNullOrBlank()) {
+                } else {
+
+                }
                 return true
+
             }
         })
     }

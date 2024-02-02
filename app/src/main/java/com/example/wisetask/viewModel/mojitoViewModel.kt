@@ -25,7 +25,6 @@ class mojitoViewModel : ViewModel() {
                 }
 
                 override fun onFailure(call: Call<CocktailResponse>, t: Throwable) {
-                    // Handle the failure
                 }
             })
         }

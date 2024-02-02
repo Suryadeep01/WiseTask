@@ -1,5 +1,3 @@
-// DrinkDetailsActivity.kt
-
 package com.example.wisetask.View
 
 import android.os.Bundle
@@ -16,24 +14,78 @@ class DrinkDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_drink_details)
 
-        // Check if data is passed through intent
+
         if (intent.hasExtra("cocktail")) {
-            // Retrieve Cocktail object from intent
             val cocktail = intent.getSerializableExtra("cocktail") as? Cocktail
 
-            // Initialize views
+
             val imageViewDetails: ImageView = findViewById(R.id.imageViewDetails)
             val textNameDetails: TextView = findViewById(R.id.textNameDetails)
             val textInstructionsDetails: TextView = findViewById(R.id.textInstructionsDetails)
+            val textIngredientsDetails: TextView = findViewById(R.id.textIngredientsDetails)
 
-            // Display image using Glide
+
             Glide.with(this)
-                .load(cocktail?.strDrinkThumb)
+                .load(cocktail?.strDrinkThumb) // Replace with actual property
                 .into(imageViewDetails)
 
-            // Display text data
+
             textNameDetails.text = cocktail?.strDrink
             textInstructionsDetails.text = cocktail?.strInstructions
+
+
+            val ingredientsBuilder = StringBuilder()
+            for (i in 1..15) {
+                val ingredient = getIngredient(cocktail, i)
+                val measure = getMeasure(cocktail, i)
+
+                if (!ingredient.isNullOrBlank() && !measure.isNullOrBlank()) {
+                    ingredientsBuilder.append("$ingredient: $measure\n")
+                }
+            }
+            textIngredientsDetails.text = ingredientsBuilder.toString()
+        }
+    }
+
+    private fun getIngredient(cocktail: Cocktail?, index: Int): String? {
+        return when (index) {
+            1 -> cocktail?.strIngredient1
+            2 -> cocktail?.strIngredient2
+            3 -> cocktail?.strIngredient3
+            4 -> cocktail?.strIngredient4
+            5 -> cocktail?.strIngredient5
+            6 -> cocktail?.strIngredient6
+            7 -> cocktail?.strIngredient7
+            8 -> cocktail?.strIngredient8
+            9 -> cocktail?.strIngredient9
+            10 -> cocktail?.strIngredient10
+            11 -> cocktail?.strIngredient11
+            12 -> cocktail?.strIngredient12
+            13 -> cocktail?.strIngredient13
+            14 -> cocktail?.strIngredient14
+            15 -> cocktail?.strIngredient15
+            else -> null
+        }
+    }
+
+    private fun getMeasure(cocktail: Cocktail?, index: Int): String? {
+        return when (index) {
+            1 -> cocktail?.strMeasure1
+            2 -> cocktail?.strMeasure2
+            3 -> cocktail?.strMeasure3
+            4 -> cocktail?.strMeasure4
+            5 -> cocktail?.strMeasure5
+            6 -> cocktail?.strMeasure6
+            7 -> cocktail?.strMeasure7
+            8 -> cocktail?.strMeasure8
+            9 -> cocktail?.strMeasure9
+            10 -> cocktail?.strMeasure10
+            11 -> cocktail?.strMeasure11
+            12 -> cocktail?.strMeasure12
+            13 -> cocktail?.strMeasure13
+            14 -> cocktail?.strMeasure14
+            15 -> cocktail?.strMeasure15
+            else -> null
         }
     }
 }

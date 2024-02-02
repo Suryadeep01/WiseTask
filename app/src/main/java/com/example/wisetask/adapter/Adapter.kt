@@ -1,5 +1,3 @@
-// Adapter.kt
-
 package com.example.wisetask.adapter
 
 import android.view.LayoutInflater
